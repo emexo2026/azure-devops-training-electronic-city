@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azure DevOps Training in Electronic City Bangalore | Emexo Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --azure:#0078D4;
+  --azure-dark:#005a9e;
+  --azure-light:#40A9FF;
+  --ink:#0a0f1e;
+  --ink2:#1a2035;
+  --steel:#c9d8f0;
+  --mist:#e8f1fb;
+  --accent:#00D4AA;
+  --accent2:#FF6B35;
+  --white:#ffffff;
+  --txt:#d0dff5;
+  --txt2:#8099c0;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--ink);
+  color:var(--txt);
+  overflow-x:hidden;
+  line-height:1.7;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--ink2)}
+::-webkit-scrollbar-thumb{background:var(--azure);border-radius:3px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 4%;
+  background:rgba(10,15,30,0.85);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(0,120,212,0.15);
+  transition:all 0.4s;
+}
+.nav-logo img{height:38px;filter:brightness(1.1)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  color:var(--txt2);font-size:0.85rem;text-decoration:none;
+  font-family:'Syne',sans-serif;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  transition:color 0.3s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;
+  background:var(--azure-light);transition:width 0.3s;
+}
+.nav-links a:hover{color:var(--azure-light)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  background:var(--azure);color:#fff;padding:.55rem 1.4rem;
+  border-radius:6px;font-family:'Syne',sans-serif;font-weight:700;
+  font-size:.82rem;text-decoration:none;letter-spacing:.05em;
+  transition:background 0.3s,transform 0.2s;
+}
+.nav-cta:hover{background:var(--azure-dark);transform:translateY(-1px)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:8rem 4% 5rem;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(0,120,212,0.18) 0%,transparent 70%),
+             radial-gradient(ellipse 50% 50% at 20% 80%,rgba(0,212,170,0.10) 0%,transparent 60%);
+}
+.grid-lines{
+  position:absolute;inset:0;opacity:0.06;
+  background-image:linear-gradient(rgba(0,120,212,0.8) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(0,120,212,0.8) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.hero-content{position:relative;z-index:2;max-width:680px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,120,212,0.12);border:1px solid rgba(0,120,212,0.35);
+  padding:.4rem 1rem;border-radius:100px;
+  font-size:.78rem;font-family:'Syne',sans-serif;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--azure-light);
+  margin-bottom:1.5rem;
+}
+.hero-badge span.dot{
+  width:7px;height:7px;border-radius:50%;background:var(--accent);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero h1{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(2.4rem,5vw,4rem);line-height:1.1;
+  color:var(--white);margin-bottom:1.5rem;
+}
+.hero h1 .az{color:var(--azure-light)}
+.hero h1 .acc{color:var(--accent)}
+.hero-sub{
+  font-size:1.1rem;color:var(--txt2);line-height:1.8;
+  max-width:560px;margin-bottom:2.5rem;
+}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  background:var(--azure);color:#fff;padding:.85rem 2rem;
+  border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;
+  font-size:.9rem;text-decoration:none;letter-spacing:.04em;
+  transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary:hover{background:var(--azure-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,120,212,0.35)}
+.btn-outline{
+  border:1.5px solid rgba(0,120,212,0.5);color:var(--azure-light);
+  padding:.85rem 2rem;border-radius:8px;font-family:'Syne',sans-serif;
+  font-weight:700;font-size:.9rem;text-decoration:none;
+  transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-outline:hover{border-color:var(--azure-light);background:rgba(0,120,212,0.1);transform:translateY(-2px)}
+.hero-stats{
+  display:flex;gap:3rem;margin-top:3.5rem;
+  padding-top:2rem;border-top:1px solid rgba(0,120,212,0.15);
+}
+.stat-item .num{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.8rem;
+  color:var(--white);display:block;
+}
+.stat-item .lbl{font-size:.8rem;color:var(--txt2);letter-spacing:.05em}
+.hero-visual{
+  position:absolute;right:4%;top:50%;transform:translateY(-50%);
+  width:42%;max-width:520px;z-index:1;
+}
+.hero-img{
+  width:100%;border-radius:16px;
+  border:1px solid rgba(0,120,212,0.2);
+  animation:float 6s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+/* ── SECTION BASE ── */
+section{padding:6rem 4%}
+.section-label{
+  display:inline-block;font-family:'Syne',sans-serif;font-weight:700;
+  font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--azure-light);margin-bottom:1rem;
+}
+.section-title{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--white);
+  line-height:1.15;margin-bottom:1rem;
+}
+.section-sub{
+  font-size:1rem;color:var(--txt2);max-width:560px;line-height:1.8;
+}
+.section-header{margin-bottom:3.5rem}
+
+/* ── WHY SECTION ── */
+.why-section{background:var(--ink2)}
+.why-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1.5px;background:rgba(0,120,212,0.12);
+  border-radius:12px;overflow:hidden;
+}
+.why-item{
+  background:var(--ink2);padding:2rem;
+  transition:background 0.3s;
+  display:flex;align-items:flex-start;gap:1rem;
+}
+.why-item:hover{background:rgba(0,120,212,0.08)}
+.why-icon{
+  width:42px;height:42px;border-radius:10px;
+  background:rgba(0,120,212,0.12);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:1.2rem;
+}
+.why-item h3{
+  font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;
+  color:var(--white);margin-bottom:.3rem;
+}
+.why-item p{font-size:.88rem;color:var(--txt2);line-height:1.6}
+
+/* ── COURSE HIGHLIGHTS ── */
+.highlights-section{}
+.hl-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hl-img{width:100%;border-radius:16px;border:1px solid rgba(0,212,170,0.2)}
+.checklist{list-style:none;margin-top:1.5rem;display:flex;flex-direction:column;gap:.85rem}
+.checklist li{
+  display:flex;align-items:center;gap:.85rem;
+  font-size:.95rem;color:var(--txt);
+  padding:.7rem 1rem;
+  background:rgba(255,255,255,0.02);border-radius:8px;
+  border:1px solid rgba(0,120,212,0.08);
+  transition:all 0.3s;
+}
+.checklist li:hover{background:rgba(0,120,212,0.08);border-color:rgba(0,120,212,0.25);transform:translateX(5px)}
+.check{
+  width:24px;height:24px;border-radius:6px;
+  background:rgba(0,212,170,0.12);border:1px solid rgba(0,212,170,0.3);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:.75rem;color:var(--accent);
+}
+
+/* ── PRACTICAL TRAINING ── */
+.practical-section{background:var(--ink2)}
+.practical-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.scenarios-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+.scenario-card{
+  background:rgba(0,120,212,0.06);
+  border:1px solid rgba(0,120,212,0.15);
+  border-radius:10px;padding:1.1rem;
+  transition:all 0.3s;
+}
+.scenario-card:hover{background:rgba(0,120,212,0.12);border-color:rgba(0,120,212,0.35);transform:translateY(-3px)}
+.scenario-card .sc-icon{font-size:1.5rem;margin-bottom:.5rem}
+.scenario-card h4{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:.85rem;color:var(--white);
+}
+.prac-img{width:100%;border-radius:16px;border:1px solid rgba(0,120,212,0.2);box-shadow:0 20px 60px rgba(0,120,212,0.1)}
+
+/* ── CAREER ROLES ── */
+.roles-section{}
+.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin-top:2rem}
+.role-card{
+  background:var(--ink2);border:1px solid rgba(0,120,212,0.12);
+  border-radius:12px;padding:1.5rem 1.2rem;text-align:center;
+  transition:all 0.4s;cursor:default;
+}
+.role-card:hover{
+  border-color:var(--azure-light);
+  background:rgba(0,120,212,0.08);
+  transform:translateY(-6px);
+  box-shadow:0 16px 40px rgba(0,120,212,0.15);
+}
+.role-card .ri{font-size:2rem;margin-bottom:.7rem}
+.role-card h3{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:.9rem;color:var(--white);
+}
+
+/* ── PLACEMENT ── */
+.placement-section{background:var(--ink2)}
+.placement-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.pl-card{
+  background:rgba(0,120,212,0.05);
+  border:1px solid rgba(0,120,212,0.12);
+  border-radius:14px;padding:2rem 1.5rem;
+  transition:all 0.35s;
+}
+.pl-card:hover{background:rgba(0,120,212,0.10);border-color:rgba(0,120,212,0.3);transform:translateY(-5px)}
+.pl-card .pi{
+  width:50px;height:50px;border-radius:12px;
+  background:rgba(0,120,212,0.12);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:1rem;
+}
+.pl-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--white);margin-bottom:.5rem}
+.pl-card p{font-size:.88rem;color:var(--txt2);line-height:1.6}
+
+/* ── ADVANCED ── */
+.advanced-section{}
+.adv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.adv-item{
+  background:var(--ink2);border:1px solid rgba(0,120,212,0.12);
+  border-radius:12px;padding:1.4rem;
+  display:flex;align-items:flex-start;gap:1rem;
+  transition:all 0.3s;
+}
+.adv-item:hover{border-color:rgba(0,212,170,0.35);transform:translateY(-3px);background:rgba(0,212,170,0.04)}
+.adv-num{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;
+  color:rgba(0,120,212,0.25);line-height:1;min-width:40px;
+}
+.adv-item h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:var(--white);margin-bottom:.3rem}
+.adv-item p{font-size:.84rem;color:var(--txt2);line-height:1.5}
+
+/* ── FAQ ── */
+.faq-section{background:var(--ink2)}
+.faq-container{max-width:760px;margin:0 auto}
+.faq-item{
+  border-bottom:1px solid rgba(0,120,212,0.12);
+  overflow:hidden;
+}
+.faq-q{
+  padding:1.3rem 0;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:1rem;color:var(--white);
+  transition:color 0.3s;gap:1rem;
+  user-select:none;
+}
+.faq-q:hover{color:var(--azure-light)}
+.faq-toggle{
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(0,120,212,0.12);border:1px solid rgba(0,120,212,0.25);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:1rem;color:var(--azure-light);
+  transition:all 0.3s;
+}
+.faq-item.open .faq-toggle{transform:rotate(45deg);background:rgba(0,120,212,0.2)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height 0.45s ease,padding 0.3s;
+  font-size:.92rem;color:var(--txt2);line-height:1.8;
+}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:1.3rem}
+
+/* ── CONTACT / CTA ── */
+.cta-section{
+  text-align:center;padding:7rem 4%;
+  position:relative;overflow:hidden;
+}
+.cta-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(0,120,212,0.14) 0%,transparent 70%);
+}
+.cta-section .section-title{font-size:clamp(2rem,4vw,3.2rem)}
+.cta-section .section-sub{margin:0 auto 2.5rem;max-width:540px;text-align:center}
+.contact-info{
+  display:flex;align-items:center;justify-content:center;
+  gap:3rem;margin-top:3rem;flex-wrap:wrap;
+}
+.ci{
+  display:flex;align-items:center;gap:.7rem;
+  color:var(--txt2);font-size:.9rem;
+}
+.ci a{color:var(--txt2);text-decoration:none;transition:color 0.3s}
+.ci a:hover{color:var(--azure-light)}
+.ci-icon{
+  width:36px;height:36px;border-radius:8px;
+  background:rgba(0,120,212,0.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:rgba(0,0,0,0.4);
+  border-top:1px solid rgba(0,120,212,0.1);
+  padding:2rem 4%;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+footer p{font-size:.8rem;color:var(--txt2)}
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal{
+  opacity:0;transform:translateY(40px);
+  transition:opacity 0.7s ease,transform 0.7s ease;
+}
+.reveal.from-left{transform:translateX(-50px)}
+.reveal.from-right{transform:translateX(50px)}
+.reveal.scale{transform:scale(0.92) translateY(20px)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+.reveal-delay-5{transition-delay:0.5s}
+.reveal-delay-6{transition-delay:0.6s}
+
+/* ── COUNTER ANIM ── */
+.counter{display:inline-block}
+
+/* ── PARTICLES ── */
+#particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.particle{
+  position:absolute;border-radius:50%;
+  background:var(--azure-light);opacity:0;
+  animation:drift linear infinite;
+}
+@keyframes drift{
+  0%{opacity:0;transform:translateY(0) scale(0)}
+  10%{opacity:0.4}
+  90%{opacity:0.2}
+  100%{opacity:0;transform:translateY(-80vh) scale(1.2)}
+}
+
+/* ── PIPELINE ANIM ── */
+.pipeline-bar{
+  display:flex;align-items:center;gap:0;
+  margin:2rem 0 3rem;overflow:hidden;border-radius:8px;
+}
+.pipe-step{
+  flex:1;padding:.7rem .5rem;text-align:center;
+  font-size:.72rem;font-family:'Syne',sans-serif;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;
+  background:rgba(0,120,212,0.08);border:1px solid rgba(0,120,212,0.12);
+  color:var(--txt2);position:relative;transition:all 0.3s;
+}
+.pipe-step.active{background:rgba(0,120,212,0.2);border-color:rgba(0,120,212,0.5);color:var(--azure-light)}
+.pipe-step::after{
+  content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);
+  color:rgba(0,120,212,0.4);font-size:.8rem;z-index:2;
+}
+.pipe-step:last-child::after{display:none}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .hero-visual{display:none}
+  .hero-content{max-width:100%}
+  .why-grid{grid-template-columns:1fr}
+  .hl-layout,.practical-layout{grid-template-columns:1fr}
+  .placement-cards{grid-template-columns:1fr 1fr}
+  nav .nav-links{display:none}
+  .hero-stats{gap:1.5rem}
+}
+@media(max-width:600px){
+  .placement-cards,.scenarios-grid{grid-template-columns:1fr}
+  .contact-info{flex-direction:column;gap:1.2rem;align-items:flex-start}
+  footer{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo"><img src="https://www.emexotechnologies.com/wp-content/uploads/2020/02/emexo-logo.png" alt="Emexo Technologies"></a>
+  <ul class="nav-links">
+    <li><a href="#why">Why Azure</a></li>
+    <li><a href="#course">Course</a></li>
+    <li><a href="#careers">Careers</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="tel:+919513216462" class="nav-cta">📞 Enroll Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div id="particles"></div>
+  <div class="hero-bg"></div>
+  <div class="grid-lines"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span>Electronic City · Bangalore</div>
+    <h1>
+      Master <span class="az">Azure DevOps</span><br>
+      <span class="acc">Real-Time</span> Industry Training
+    </h1>
+    <p class="hero-sub">
+      Hands-on CI/CD pipelines, Kubernetes orchestration, Docker, Infrastructure as Code & AZ-400 certification prep — all under one roof in Electronic City.
+    </p>
+
+    <div class="pipeline-bar" id="pipelineBar">
+      <div class="pipe-step" data-i="0">Plan</div>
+      <div class="pipe-step" data-i="1">Code</div>
+      <div class="pipe-step" data-i="2">Build</div>
+      <div class="pipe-step" data-i="3">Test</div>
+      <div class="pipe-step" data-i="4">Deploy</div>
+      <div class="pipe-step" data-i="5">Monitor</div>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="https://www.emexotechnologies.com/courses/microsoft-azure-devops-training-course-az-400/" class="btn-primary" target="_blank">🚀 View Course Details</a>
+      <a href="tel:+919513216462" class="btn-outline">📞 +91 95132 16462</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item"><span class="num counter" data-target="500">0</span>+ <span class="lbl">Students Trained</span></div>
+      <div class="stat-item"><span class="num counter" data-target="98">0</span>% <span class="lbl">Placement Rate</span></div>
+      <div class="stat-item"><span class="num counter" data-target="12">0</span>+ <span class="lbl">Years Experience</span></div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <img src="https://raw.githubusercontent.com/emexo2026/azure-devops-training-electronic-city/refs/heads/main/azure-devops-cicd-automation-workflow.png"
+         alt="Azure DevOps CI/CD Automation Workflow" class="hero-img">
+  </div>
+</section>
+
+<!-- WHY AZURE -->
+<section class="why-section" id="why">
+  <div class="section-header reveal">
+    <span class="section-label">Why It Matters</span>
+    <h2 class="section-title">Why Azure DevOps in Modern IT</h2>
+    <p class="section-sub">Enterprises globally rely on Azure DevOps to ship faster, automate everything, and eliminate manual bottlenecks.</p>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-item reveal reveal-delay-1">
+      <div class="why-icon">⚡</div>
+      <div><h3>CI/CD Pipelines</h3><p>Automate build, test & deploy cycles to release software faster with zero downtime.</p></div>
+    </div>
+    <div class="why-item reveal reveal-delay-2">
+      <div class="why-icon">☁️</div>
+      <div><h3>Azure Cloud Deployment</h3><p>Deploy applications seamlessly to Azure cloud with automated infrastructure provisioning.</p></div>
+    </div>
+    <div class="why-item reveal reveal-delay-3">
+      <div class="why-icon">🐳</div>
+      <div><h3>Docker & Kubernetes</h3><p>Containerize applications and orchestrate at scale using industry-standard tooling.</p></div>
+    </div>
+    <div class="why-item reveal reveal-delay-4">
+      <div class="why-icon">🔐</div>
+      <div><h3>DevSecOps Integration</h3><p>Embed security into every stage of the pipeline — shift left with confidence.</p></div>
+    </div>
+    <div class="why-item reveal reveal-delay-5">
+      <div class="why-icon">📋</div>
+      <div><h3>YAML Pipeline Management</h3><p>Write declarative pipelines as code, version-controlled and fully repeatable.</p></div>
+    </div>
+    <div class="why-item reveal reveal-delay-6">
+      <div class="why-icon">📊</div>
+      <div><h3>Monitoring & Logging</h3><p>Gain end-to-end observability with Azure Monitor, Log Analytics and dashboards.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE HIGHLIGHTS -->
+<section class="highlights-section" id="course">
+  <div class="hl-layout">
+    <div class="reveal from-left">
+      <span class="section-label">Course Highlights</span>
+      <h2 class="section-title">Everything You Need to Become Job-Ready</h2>
+      <p class="section-sub">AZ-400 aligned curriculum with real enterprise DevOps workflows — not just theory.</p>
+      <ul class="checklist">
+        <li><span class="check">✓</span> Real-Time Project Training</li>
+        <li><span class="check">✓</span> Practical CI/CD Implementation</li>
+        <li><span class="check">✓</span> Azure Pipeline Automation</li>
+        <li><span class="check">✓</span> Docker &amp; Kubernetes Integration</li>
+        <li><span class="check">✓</span> Infrastructure as Code (IaC)</li>
+        <li><span class="check">✓</span> DevSecOps Workflow Training</li>
+        <li><span class="check">✓</span> AZ-400 Certification Prep</li>
+        <li><span class="check">✓</span> Placement Assistance + Mock Interviews</li>
+        <li><span class="check">✓</span> Classroom &amp; Online Batches</li>
+      </ul>
+    </div>
+    <div class="reveal from-right">
+      <img src="https://raw.githubusercontent.com/emexo2026/azure-devops-training-electronic-city/refs/heads/main/azure-devops-enterprise-cloud-architecture.png"
+           alt="Azure DevOps Enterprise Cloud Architecture" class="hl-img">
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICAL TRAINING -->
+<section class="practical-section">
+  <div class="practical-layout">
+    <div class="reveal from-left">
+      <img src="https://raw.githubusercontent.com/emexo2026/azure-devops-training-electronic-city/refs/heads/main/azure-devops-cicd-automation-workflow.png"
+           alt="Azure DevOps CI/CD Workflow" class="prac-img">
+    </div>
+    <div class="reveal from-right">
+      <span class="section-label">Hands-On Labs</span>
+      <h2 class="section-title">Practical Scenarios You'll Build</h2>
+      <p class="section-sub">Every session involves real DevOps implementation — not slides.</p>
+      <div class="scenarios-grid">
+        <div class="scenario-card reveal reveal-delay-1 scale">
+          <div class="sc-icon">🔄</div>
+          <h4>CI/CD Pipelines</h4>
+        </div>
+        <div class="scenario-card reveal reveal-delay-2 scale">
+          <div class="sc-icon">🚀</div>
+          <h4>Auto Deployment</h4>
+        </div>
+        <div class="scenario-card reveal reveal-delay-3 scale">
+          <div class="sc-icon">🐳</div>
+          <h4>Docker Containers</h4>
+        </div>
+        <div class="scenario-card reveal reveal-delay-4 scale">
+          <div class="sc-icon">⚙️</div>
+          <h4>Kubernetes Orchestration</h4>
+        </div>
+        <div class="scenario-card reveal reveal-delay-5 scale">
+          <div class="sc-icon">📝</div>
+          <h4>YAML Pipelines</h4>
+        </div>
+        <div class="scenario-card reveal reveal-delay-6 scale">
+          <div class="sc-icon">📈</div>
+          <h4>Cloud Monitoring</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVANCED MODULES -->
+<section class="advanced-section">
+  <div class="section-header reveal">
+    <span class="section-label">Advanced Curriculum</span>
+    <h2 class="section-title">Enterprise-Grade Advanced Modules</h2>
+    <p class="section-sub">Go beyond basics with topics used in Fortune 500 DevOps teams every day.</p>
+  </div>
+  <div class="adv-grid">
+    <div class="adv-item reveal reveal-delay-1">
+      <span class="adv-num">01</span>
+      <div><h4>Enterprise CI/CD Architecture</h4><p>Design scalable multi-stage pipelines for large engineering orgs.</p></div>
+    </div>
+    <div class="adv-item reveal reveal-delay-2">
+      <span class="adv-num">02</span>
+      <div><h4>Infrastructure as Code Automation</h4><p>Terraform, ARM templates, Bicep — manage infra declaratively.</p></div>
+    </div>
+    <div class="adv-item reveal reveal-delay-3">
+      <span class="adv-num">03</span>
+      <div><h4>Kubernetes Deployment Strategies</h4><p>Blue-green, canary, rolling updates in AKS clusters.</p></div>
+    </div>
+    <div class="adv-item reveal reveal-delay-4">
+      <span class="adv-num">04</span>
+      <div><h4>Hybrid Cloud DevOps</h4><p>Manage workloads across on-prem and Azure seamlessly.</p></div>
+    </div>
+    <div class="adv-item reveal reveal-delay-5">
+      <span class="adv-num">05</span>
+      <div><h4>DevSecOps Integration</h4><p>SAST, DAST, container scanning — security as code.</p></div>
+    </div>
+    <div class="adv-item reveal reveal-delay-6">
+      <span class="adv-num">06</span>
+      <div><h4>Cloud Monitoring Systems</h4><p>Azure Monitor, Application Insights, Log Analytics dashboards.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER ROLES -->
+<section class="roles-section" id="careers">
+  <div class="section-header reveal">
+    <span class="section-label">Career Opportunities</span>
+    <h2 class="section-title">Roles You Can Land in Bangalore</h2>
+    <p class="section-sub">Bangalore's tech ecosystem is hungry for Azure DevOps engineers. These doors open after training.</p>
+  </div>
+  <div class="roles-grid">
+    <div class="role-card reveal reveal-delay-1">
+      <div class="ri">🔧</div>
+      <h3>DevOps Engineer</h3>
+    </div>
+    <div class="role-card reveal reveal-delay-2">
+      <div class="ri">☁️</div>
+      <h3>Cloud Engineer</h3>
+    </div>
+    <div class="role-card reveal reveal-delay-3">
+      <div class="ri">🛡️</div>
+      <h3>Azure Administrator</h3>
+    </div>
+    <div class="role-card reveal reveal-delay-4">
+      <div class="ri">🏗️</div>
+      <h3>Infrastructure Engineer</h3>
+    </div>
+    <div class="role-card reveal reveal-delay-5">
+      <div class="ri">🤖</div>
+      <h3>Automation Engineer</h3>
+    </div>
+    <div class="role-card reveal reveal-delay-6">
+      <div class="ri">🚦</div>
+      <h3>Release Engineer</h3>
+    </div>
+    <div class="role-card reveal reveal-delay-1">
+      <div class="ri">📡</div>
+      <h3>Site Reliability Engineer</h3>
+    </div>
+  </div>
+</section>
+
+<!-- PLACEMENT -->
+<section class="placement-section">
+  <div class="section-header reveal">
+    <span class="section-label">Placement Support</span>
+    <h2 class="section-title">We Don't Just Train — We Place</h2>
+    <p class="section-sub">Complete career support from mock interviews to offer letter guidance.</p>
+  </div>
+  <div class="placement-cards">
+    <div class="pl-card reveal reveal-delay-1">
+      <div class="pi">🎯</div>
+      <h3>Mock Interviews</h3>
+      <p>Real interview simulations with industry experts to build your confidence and readiness.</p>
+    </div>
+    <div class="pl-card reveal reveal-delay-2">
+      <div class="pi">📄</div>
+      <h3>Resume Building</h3>
+      <p>ATS-optimized resumes crafted around your new Azure DevOps skills and project work.</p>
+    </div>
+    <div class="pl-card reveal reveal-delay-3">
+      <div class="pi">🏭</div>
+      <h3>Real-Time Industry Scenarios</h3>
+      <p>Tackle live industry problems so you can answer any technical panel with confidence.</p>
+    </div>
+    <div class="pl-card reveal reveal-delay-4">
+      <div class="pi">📊</div>
+      <h3>Technical Assessments</h3>
+      <p>Timed assessments mirroring actual company hiring tests for DevOps and cloud roles.</p>
+    </div>
+    <div class="pl-card reveal reveal-delay-5">
+      <div class="pi">🧭</div>
+      <h3>Career Guidance</h3>
+      <p>Dedicated mentors help you map your career path and choose the right opportunities.</p>
+    </div>
+    <div class="pl-card reveal reveal-delay-6">
+      <div class="pi">🤝</div>
+      <h3>Interview Preparation</h3>
+      <p>Topic-wise preparation sessions covering all common Azure DevOps interview questions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-header reveal" style="text-align:center">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-container">
+    <div class="faq-item reveal reveal-delay-1">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Is Azure DevOps good for freshers?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Yes. Freshers can build strong cloud and automation careers by learning Azure DevOps with practical project exposure. Our curriculum is structured to take you from zero to job-ready.</div>
+    </div>
+    <div class="faq-item reveal reveal-delay-2">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Does the course include real-time projects?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Yes. Students work on CI/CD pipelines, deployment automation, Docker, Kubernetes, and cloud infrastructure projects during every session — not just theory.</div>
+    </div>
+    <div class="faq-item reveal reveal-delay-3">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Is placement support available?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Yes. The course includes placement assistance, mock interviews, resume preparation, and direct referrals to our hiring network in Bangalore and beyond.</div>
+    </div>
+    <div class="faq-item reveal reveal-delay-4">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Is AZ-400 certification covered?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Yes. The training curriculum is aligned to Microsoft AZ-400 certification. You'll be well-prepared to clear the exam after completing the course.</div>
+    </div>
+    <div class="faq-item reveal reveal-delay-5">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Are online classes available?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Yes. Both classroom training at our Electronic City center and live online training options are available with flexible batch timings on weekdays and weekends.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div style="position:relative;z-index:2">
+    <span class="section-label reveal">Get Started Today</span>
+    <h2 class="section-title reveal reveal-delay-1">Ready to Launch Your Azure DevOps Career?</h2>
+    <p class="section-sub reveal reveal-delay-2">Join hundreds of professionals who built cloud careers through Emexo Technologies' industry-focused training in Electronic City, Bangalore.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal reveal-delay-3">
+      <a href="https://www.emexotechnologies.com/courses/microsoft-azure-devops-training-course-az-400/" target="_blank" class="btn-primary">🚀 Enroll in Azure DevOps Course</a>
+      <a href="tel:+919513216462" class="btn-outline">📞 Call Us Now</a>
+    </div>
+    <div class="contact-info reveal reveal-delay-4">
+      <div class="ci"><span class="ci-icon">📍</span><span>Electronic City, Bangalore</span></div>
+      <div class="ci"><span class="ci-icon">📞</span><a href="tel:+919513216462">+91 95132 16462</a></div>
+      <div class="ci"><span class="ci-icon">🌐</span><a href="https://www.emexotechnologies.com" target="_blank">emexotechnologies.com</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="https://www.emexotechnologies.com/wp-content/uploads/2020/02/emexo-logo.png" alt="Emexo Technologies" style="height:30px;filter:brightness(0.8)">
+  <p>© 2025 Emexo Technologies. Best Azure DevOps Training in Electronic City Bangalore.</p>
+</footer>
+
+<script>
+/* ── PARTICLES ── */
+const pc = document.getElementById('particles');
+for(let i=0;i<28;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  const s=Math.random()*4+2;
+  p.style.cssText=`
+    width:${s}px;height:${s}px;
+    left:${Math.random()*100}%;
+    bottom:${Math.random()*20}%;
+    animation-duration:${Math.random()*12+8}s;
+    animation-delay:${Math.random()*8}s;
+    opacity:0;
+  `;
+  pc.appendChild(p);
+}
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+    } else {
+      e.target.classList.remove('visible');
+    }
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* ── COUNTER ANIMATION ── */
+function animateCounter(el,target,dur=1800){
+  let start=null;
+  const step=ts=>{
+    if(!start)start=ts;
+    const progress=Math.min((ts-start)/dur,1);
+    const ease=1-Math.pow(1-progress,3);
+    el.textContent=Math.floor(ease*target);
+    if(progress<1)requestAnimationFrame(step);
+    else el.textContent=target;
+  };
+  requestAnimationFrame(step);
+}
+const counterObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const target=+e.target.dataset.target;
+      animateCounter(e.target,target);
+      counterObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.counter').forEach(el=>counterObs.observe(el));
+
+/* ── PIPELINE ANIMATION ── */
+const steps=document.querySelectorAll('.pipe-step');
+let current=0;
+function runPipeline(){
+  steps.forEach((s,i)=>s.classList.toggle('active',i===current));
+  current=(current+1)%steps.length;
+}
+runPipeline();
+setInterval(runPipeline,900);
+
+/* ── FAQ ── */
+function toggleFaq(el){
+  const item=el.parentElement;
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f=>f.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+/* ── NAV SCROLL EFFECT ── */
+window.addEventListener('scroll',()=>{
+  const nav=document.querySelector('nav');
+  nav.style.padding=window.scrollY>60?'0.6rem 4%':'1rem 4%';
+});
+</script>
+</body>
+</html>
